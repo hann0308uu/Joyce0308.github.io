@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃敬中 | 科技領域碩士作品集</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入Font Awesome圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- 如果外部CSS沒有正確載入，這裡提供一個備用的內嵌樣式 -->
+    <style>
+        /* 基本重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 基本樣式 */
+        body {
+            font-family: "PingFang TC", "蘋方-繁", "Heiti TC", "黑體-繁", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #121212;
+            overflow-x: hidden;
+        }
+        
+        /* 霓虹燈效果 */
+        .neon-border {
+            border: 1px solid #00f7ff;
+            box-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+            transition: all 0.3s ease;
+        }
+        
+        .neon-text {
+            color: #00f7ff;
+            text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+        }
+        
+        /* 容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 導航 */
+        .navigation {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+        }
+        
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navigation li {
+            margin: 0 20px;
+        }
+        
+        .navigation a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .navigation a:hover {
+            color: #00f7ff;
+        }
+        
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #00f7ff;
+            transition: width 0.3s ease;
+        }
+        
+        .navigation a:hover::after {
+            width: 100%;
+        }
+        
+        /* 英雄區塊 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 247, 255, 0.1) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            margin-top: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: #e0e0e0;
+            text-decoration: none;
+            border: 2px solid #00f7ff;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: rgba(0, 247, 255, 0.2);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 247, 255, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: rgba(0, 247, 255, 0.2);
+        }
+        
+        /* 關於區塊 */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #00f7ff;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .profile-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 3px solid rgba(0, 247, 255, 0.3);
+        }
+        
+        .skill-container {
+            margin-top: 40px;
+        }
+        
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #2c3e50;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #00f7ff;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        /* 作品集區塊 */
+        .portfolio {
+            background-color: #0a0a0a;
+        }
+        
+        .portfolio-filter {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .portfolio-filter button {
+            padding: 8px 20px;
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-filter button:hover, .portfolio-filter button.active {
+            color: #00f7ff;
+            background-color: rgba(0, 247, 255, 0.1);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-item img {
+            max-width: 100%;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-tags span {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: rgba(0, 247, 255, 0.2);
+            color: #00f7ff;
+            border-radius: 3px;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+        
+        /* 聯絡區塊 */
+        .contact {
+            background-color: #121212;
+        }
+        
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 247, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 20px;
+            color: #00f7ff;
+            font-size: 1.3em;
+        }
+        
+        .social-links {
+            margin-top: 40px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 247, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: #00f7ff;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(0, 247, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 5px;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #00f7ff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        /* 頁腳 */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #0a0a0a;
+            border-top: 1px solid rgba(0, 247, 255, 0.1);
+            color: #7f8c8d;
+        }
+        
+        /* 動畫效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 1s ease;
+        }
+        
+        /* 時間軸樣式 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: rgba(0, 247, 255, 0.05);
+            border-radius: 5px;
+            border-left: 3px solid #00f7ff;
+            position: relative;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        .timeline-item h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #00f7ff;
+        }
+        
+        .timeline-item p {
+            margin-bottom: 10px;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1.2em;
+            }
+            
+            .navigation ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navigation li {
+                margin: 10px 0;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .about-text, .profile-image, .contact-info, .contact-form {
+                flex: 100%;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航 -->
+    <div class="navigation">
+        <div class="container">
+            <ul>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#experience">研究經歷</a></li>
+                <li><a href="#contact">聯絡方式</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 英雄區塊 -->
+    <section id="home" class="hero">
+        <div class="hero-content animate">
+            <h1 class="neon-text">黃敬中</h1>
+            <p>自動化技術 | 嵌入式開發 | 機器學習 - 碩士畢業作品集</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">瀏覽作品</a>
+                <a href="#contact" class="btn">聯絡我</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我 -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="neon-text">關於我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text animate">
+                    <h3>您好，我是 <span class="neon-text">黃敬中 (Ryan)</span></h3>
+                    <p>我是中國科技大學自動化科技研究所的碩士研究生，個性積極並願意學習，溝通能力佳。我認為必須做成的事要靠自己，這是我最堅持的信念之一。</p>
+                    <p>我於1990年出生，大學就讀中國大學工程系，並在求學生活中不斷尋找新的挑戰來促進自我成長。我目前希望從事軟體/韌體開發工程師的工作。</p>
+                    
+                    <div class="skill-container">
+                        <h3>專業技能</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>程式設計 (C/C++、Python、Java)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>嵌入式開發 (STM32、Arduino)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>資料處理 & 機器學習</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Android應用開發</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-image animate">
+                    <img src="/api/placeholder/500/500" alt="黃敬中個人照片">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="neon-text">作品集</h2>
+            </div>
+            <div class="portfolio-filter">
+                <button class="active">全部</button>
+                <button>研究項目</button>
+                <button>應用開發</button>
+                <button>嵌入式開發</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="基於小波轉換與一維卷積神經網路事件測量取樣">
+                    <div class="portfolio-overlay">
+                        <h3>基於小波轉換與一維卷積神經網路事件測量取樣</h3>
+                        <p>2024年參與十二屆中國電力工程研討會、二十一屆電力工程研討會，使用STM32 + FreeRTOS進行事件測量開發，CNN（卷積神經網路）進行分類。</p>
+                        <div class="portfolio-tags">
+                            <span>嵌入式</span>
+                            <span>機器學習</span>
+                            <span>STM32</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="Beacon智慧物聯網應用研究">
+                    <div class="portfolio-overlay">
+                        <h3>Beacon智慧物聯網應用研究</h3>
+                        <p>2022年發表於台灣網際網路研討會TANET與全國計算機會議ICS，使用BLE（Bluetooth Low Energy）進行伺服器狀態監測。</p>
+                        <div class="portfolio-tags">
+                            <span>物聯網</span>
+                            <span>Beacon</span>
+                            <span>技術應用</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="基於嵌入式學習者專注力分析">
+                    <div class="portfolio-overlay">
+                        <h3>基於嵌入式學習者專注力分析</h3>
+                        <p>2022年發表於台灣網際網路研討會TANET與全國計算機會議ICS，使用OpenCV與Python進行學習者的注視行為分析。</p>
+                        <div class="portfolio-tags">
+                            <span>電腦視覺</span>
+                            <span>OpenCV</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="Beacon物聯網智慧商店">
+                    <div class="portfolio-overlay">
+                        <h3>Beacon物聯網智慧商店</h3>
+                        <p>大學專題：獲得優良畢業專題競賽佳作、創新創意競賽佳作。使用RFID、Arduino、Firebase、Python協同開發。</p>
+                        <div class="portfolio-tags">
+                            <span>物聯網</span>
+                            <span>RFID</span>
+                            <span>Arduino</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="智慧電網測量與控制">
+                    <div class="portfolio-overlay">
+                        <h3>智慧電網測量與控制系統</h3>
+                        <p>目前研究中 - 開發Modbus RTU、RS-485介面測量管理系統，研究AI智能提前預測負載。</p>
+                        <div class="portfolio-tags">
+                            <span>智慧電網</span>
+                            <span>控制系統</span>
+                            <span>AI應用</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate">
+                    <img src="/api/placeholder/600/400" alt="樣板件辨別系統">
+                    <div class="portfolio-overlay">
+                        <h3>樣板件辨別系統</h3>
+                        <p>東元實習計畫 - 開發樣板件辨別系統，使用ZBar進行條碼辨識，SQL資料庫進行件歸檔管理，以及Web介面（Flask + HTML/CSS）呈現零件管理功能。</p>
+                        <div class="portfolio-tags">
+                            <span>條碼辨識</span>
+                            <span>資料庫</span>
+                            <span>Web開發</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究經歷 -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="neon-text">研究經歷</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate">
+                    <h3>碩士研究生 <span class="neon-text">| 2023/9 - 2025/7</span></h3>
+                    <h4>中國科技大學 - 自動化科技研究所</h4>
+                    <p>研究方向：智能測量系統、嵌入式系統開發</p>
+                    <p>主要研究：基於小波轉換與一維卷積神經網路事件測量取樣</p>
+                    <p>技術成果：提高測量精度與事件測量處理效率</p>
+                </div>
+                <div class="timeline-item animate">
+                    <h3>學士學位 <span class="neon-text">| 2018/9 - 2023/6</span></h3>
+                    <h4>中國大學 - 工程學系</h4>
+                    <p>專題：Beacon物聯網智慧商店</p>
+                    <p>專題技術：RFID、Arduino、Firebase、Python跨平台協同</p>
+                    <p>實現了「走過即付」無接觸式交易方式</p>
+                </div>
+                <div class="timeline-item animate">
+                    <h3>實習工程師 <span class="neon-text">| 2022/7 - 2022/9</span></h3>
+                    <h4>東元電機</h4>
+                    <p>負責開發樣板件辨別與條碼辨識系統</p>
+                    <p>使用ZBar進行條碼辨識、SQL進行資料管理</p>
+                    <p>開發Web介面（Flask + HTML/CSS）提升零件管理效率</p>
+                    <p>實習收穫：提升架構思考能力，改進工作習慣，加強團隊協作解決問題能力</p>
+                </div>
+                <div class="timeline-item animate">
+                    <h3>大學社會責任實踐計畫 <span class="neon-text">| 大學期間</span></h3>
+                    <h4>踐履里‧構築永續家園</h4>
+                    <p>負責：Android應用開發</p>
+                    <p>技術：Android Studio (Java)、API整合、UI/UX設計</p>
+                    <p>成果：入選中國大學「2022創新實務應用競賽-創新發想」</p>
+                </div>
+                <div class="timeline-item animate">
+                    <h3>創新學習平台開發助教 <span class="neon-text">| 科技大學</span></h3>
+                    <h4>1know轉型教學應用</h4>
+                    <p>協助教師開發教學場域與教材</p>
+                    <p>優化教學內容呈現方式提升學習效果</p>
+                    <p>負責多位教師的開場破冰活動設計</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="neon-text">聯絡我</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <p>如果您對我的專業背景和作品感興趣，或者有任何問題或合作機會，請隨時聯絡我。我期待著與您交流！</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>ryanhuang0212@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>電話</h4>
+                            <p>0984-302-142</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>位置</h4>
+                            <p>新北市中和區

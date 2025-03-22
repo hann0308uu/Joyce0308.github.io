@@ -1,0 +1,12 @@
+/* 科技感碩士求職作品集樣式 */
+
+/* 基本重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基本樣式 */
+body {
+    font-family: "PingFang TC", "蘋方-繁",
